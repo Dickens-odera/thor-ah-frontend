@@ -10,6 +10,8 @@ import ProtectedRoute from './containers/ProtectedRoute';
 import Signin from './containers/SignIn/SignIn';
 import NavBar from './components/NavBar';
 import TextEditor from './containers/CreateArticle/TextEditor';
+import Footer from './components/Footer';
+import CreateArticlePage from './containers/CreateArticle/CreateArticlePage';
 
 const Login = () => (
   <div><h1>Login page</h1></div>
@@ -35,7 +37,7 @@ const AppRoutes = () => (
       <NavBar />
       <Route exact path='/' component={ Homepage }/>
       <Route exact path='/sample' component={ Sample }/>
-      <Route exact path='/create-article' component={ TextEditor }/>
+      <Route exact path='/create-article' component={ CreateArticlePage }/>
       <Footer />
     </Fragment>
   </Router>

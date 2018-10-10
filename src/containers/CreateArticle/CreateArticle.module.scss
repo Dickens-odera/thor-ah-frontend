@@ -1,0 +1,31 @@
+* {
+  outline: none;
+}
+
+.createArticle {
+  min-height: 500px;
+  padding: 2em;
+
+  .artilcleTitle {
+    padding: 0.3em;
+    font-size: 1.4em;
+    font-weight: bold;
+  }
+  
+  img {
+    max-width: 100%;
+  }
+  .textEditor * {
+    width: 100%;
+  }
+}
+
+.publishButton {
+  background: #414141;
+  color: #fff;
+  border: none;
+  padding: 6px 1.8em;
+  border-radius: 4px;
+}
+
+

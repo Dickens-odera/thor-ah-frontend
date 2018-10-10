@@ -11,6 +11,11 @@
   background: #F9F9F9;
   min-height: 400px;
   padding: 2em;
+  width: 100%;
+
+  img {
+    max-width: 100%;
+  }
 }
 
 .artilcleTitle {

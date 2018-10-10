@@ -1,60 +1,55 @@
-import React from 'react';
-import { Editor } from '@tinymce/tinymce-react';
-// import ArticleTitle from './ArticleTitle';
-import './TextEditor.scss';
+import React from "react";
+import { Editor } from "@tinymce/tinymce-react";
+import PropTypes from 'prop-types';
 
-const apiKey="0naso5vy7fw5eu2eqblor00o1c326x0hupermg4cli0rqoqn";
+const apiKey = "0naso5vy7fw5eu2eqblor00o1c326x0hupermg4cli0rqoqn";
 
-class TextEditor extends React.Component {
-  // state = {
-  //   editor: null
-  // }
+const TextEditor = ({
+  imageUploadHandler,
+  editorChangeHandler,
+  value,
+  placeholderFocusInHandler,
+  placeholderFocusOutHandler
+}) => (
+    <Editor
+      apiKey={apiKey}
+      value={value}
+      onChange={editorChangeHandler}
+      onFocusIn={placeholderFocusInHandler}
+      onFocusOut={placeholderFocusOutHandler}
+      init={{
+        menubar: false,
+        theme: "inlite",
+        inline: true,
+        mobile: {
+          theme: "mobile",
+          plugins: ["autosave", "lists", "autolink"]
+        },
+        plugins: [
+          "autolink",
+          "codesample",
+          "link",
+          "linkchecker",
+          "lists",
+          "mediaembed",
+          "textcolor",
+          "image",
+          "emoticons"
+        ],
+        selection_toolbar:
+          "bold italic underline strikethrough| h2 h3 | blockquote quicklink | alignleft aligncenter alignright alignfull",
+        images_upload_handler: imageUploadHandler,
+        images_reuse_filename: true,
+        toolbar: "emoticons"
+      }}
+    />
+);
 
-  componentDidMount = () => {
-
-  }
-
-  handleEditorChange = (e) => {
-    console.log('Content was updated:', e.target.getContent());
-  }
-
-  render() {
-    return (
-      <div className="container-fluid textEditor my-5">
-       <div className="row justify-content-md-center">
-        {/* <ArticleTitle /> */}
-        <div className="col-xs-12 col-md-7 col-sm-10 mainEditor">
-          <Editor
-            apiKey={apiKey}
-            initialValue="<p>Share your thoughts</p>"
-            init={{
-              menubar: false,
-              theme: "inlite",
-              inline: true,
-              height: 500,
-              mobile: { 
-                theme: "mobile",
-                plugins: [ 'autosave', 'lists', 'autolink' ]
-              },
-              plugins: [
-                'autolink',
-                'codesample',
-                'link',
-                'linkchecker',
-                'lists',
-                'mediaembed',
-                'textcolor',
-                'image',
-              ],
-              selection_toolbar: 'bold italic underline strikethrough| h2 h3 | blockquote quicklink | alignleft aligncenter alignright alignfull',
-            }}
-            onChange={this.handleEditorChange}
-          />
-        </div>
-       </div>
-      </div>
-    );
-  }
+TextEditor.propTypes = {
+  imageUploadHandler: PropTypes.func.isRequired,
+  editorChangeHandler: PropTypes.func.isRequired,
+  placeholderFocusInHandler: PropTypes.func.isRequired,
+  placeholderFocusOutHandler: PropTypes.func.isRequired
 }
 
 export default TextEditor;
