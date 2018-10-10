@@ -3,29 +3,39 @@
 }
 
 .createArticle {
-  min-height: 500px;
+  min-height: 600px;
   padding: 2em;
+  background: #f9f9f9;
 
   .artilcleTitle {
     padding: 0.3em;
     font-size: 1.4em;
     font-weight: bold;
   }
-  
+
   img {
     max-width: 100%;
   }
-  .textEditor * {
+  .textEditor {
     width: 100%;
+
+    span {
+      line-height: 0.8em;
+    }
   }
 }
 
-.publishButton {
-  background: #414141;
-  color: #fff;
-  border: none;
-  padding: 6px 1.8em;
-  border-radius: 4px;
+.buttonDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
-
+.publishButton {
+  background: #c40018;
+  color: #fff;
+  border: none;
+  padding: 6px 1.7em;
+  border-radius: 4px;
+  outline: none;
+}
