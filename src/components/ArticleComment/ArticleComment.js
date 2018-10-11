@@ -5,7 +5,6 @@ import dislikeIcon from "../../assets/down.png";
 import profileImage from "../../assets/Ellipse.png";
 // styles
 import styles from './ArticleComment.module.scss';
-import "bootstrap/dist/css/bootstrap.min.css"; 
 
 const ArticleComment = () => (
   <div className={styles.comment}>

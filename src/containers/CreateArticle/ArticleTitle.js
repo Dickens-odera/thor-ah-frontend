@@ -8,8 +8,7 @@ const ArticleTitle = ({
   value,
   titleChangeHandler,
   titlePlaceholderFocusInHandler,
-  titlePlaceholderFocusOutHandler,
-  titlePasteHandler,
+  titlePlaceholderFocusOutHandler
 }) => (
   <Editor
     apiKey={apiKey}
@@ -17,13 +16,12 @@ const ArticleTitle = ({
     onEditorChange={titleChangeHandler}
     onFocusIn={titlePlaceholderFocusInHandler}
     onFocusOut={titlePlaceholderFocusOutHandler}
-    onPaste={titlePasteHandler}
     name="article-title"
     tagName="h1"
     init={{
       menubar: false,
       inline: true,
-      theme: "inlite",
+      theme: "inlite"
     }}
   />
 );
@@ -32,8 +30,7 @@ ArticleTitle.propTypes = {
   value: PropTypes.string.isRequired,
   titleChangeHandler: PropTypes.func.isRequired,
   titlePlaceholderFocusInHandler: PropTypes.func.isRequired,
-  titlePlaceholderFocusOutHandler: PropTypes.func.isRequired,
-  titlePasteHandler: PropTypes.func.isRequired
-}
+  titlePlaceholderFocusOutHandler: PropTypes.func.isRequired
+};
 
 export default ArticleTitle;

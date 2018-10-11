@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateArticlePageContainer creates a snapshot 1`] = `
+<div
+  className="col-md-8 mx-auto my-5"
+>
+  <div
+    className="createArticle"
+  >
+    <div
+      className="articleTitle"
+    >
+      <h1
+        id="tiny-react_31875879421539258284877"
+      />
+    </div>
+    <div
+      className="textEditor"
+    >
+      <div
+        id="tiny-react_18058988331539258284879"
+      />
+    </div>
+  </div>
+  <div
+    className="mt-3 buttonDiv"
+  >
+    <button
+      className="publishButton"
+      disabled={true}
+      onClick={[Function]}
+    >
+      Publish
+    </button>
+  </div>
+</div>
+`;

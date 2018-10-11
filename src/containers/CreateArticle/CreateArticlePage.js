@@ -1,6 +1,9 @@
 /* eslint-disable */
 import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
 import axios from "axios";
+import PropTypes from "prop-types";
+import createArticle from "../../actions/articleAction";
 import ArticleTitle from "./ArticleTitle";
 import TextEditor from "./TextEditor";
 import styles from "./CreateArticle.module.scss";
@@ -13,7 +16,7 @@ class CreateArticle extends Component {
       title: "Title",
       body: "Share your thoughts...",
       description: "",
-      loading: false
+      error: {}
     };
   }
 
@@ -24,7 +27,7 @@ class CreateArticle extends Component {
 
   editorChangeHandler = body =>
     this.setState({
-      body: body
+      body
     });
 
   titlePlaceholderFocusInHandler = () => {
@@ -64,21 +67,12 @@ class CreateArticle extends Component {
     }
   };
 
-  // titlePasteHandler = (e) => {
-  //   e.preventDefault();
-  //   const content = navigator.clipboard.readText();
-  //   if (typeof clipContent !== 'string') return;
-  //   this.setState({ title: content });
-  //   console.log
-  // }
-
   imageUploadHandler = (blobInfo, success, failure) => {
     try {
-      const { imgUrl } = this.state;
       const formData = new FormData();
-      formData.append(file, blobInfo.blob(), blobInfo.filename());
-      formData.append(upload_preset, "asgjqcgx");
-      formData.append(api_key, "329369412183662");
+      formData.append("file", blobInfo.blob());
+      formData.append("upload_preset", "asgjqcgx");
+      formData.append("api_key", "329369412183662");
       const uploadUrl =
         "https://api.cloudinary.com/v1_1/dn6fnuhxr/image/upload";
       return axios
@@ -91,33 +85,57 @@ class CreateArticle extends Component {
         .then(response => {
           const data = response.data;
           const fileUrl = data.secure_url;
-          console.log(data);
-          success(result.data.secure_url);
+          success(fileUrl);
         });
     } catch (error) {
-      failure("file upload failed", console.log(error));
+      failure("file upload failed");
     }
+  };
+
+  validateArticle = () => {
+    const { title, body } = this.state;
+    const bodyValue = this.rootNode.props.value;
+
+    if (title === "Title") return false;
+    if (body === "Share your thoughts..." || bodyValue.length < 30)
+      return false;
+
+    return true;
   };
 
   handleSubmit = () => {
     const { title, body } = this.state;
+    const articleData = {
+      title,
+      body,
+      description: "Some description"
+    };
+    console.log(body);
 
-    console.log(this.rootNode.props.value);
+    this.setState({
+      title: "Title",
+      body: "Share your thoughts..."
+    });
 
-    axios
-      .post("https://thor-ah-staging.herokuapp.com/api/articles", {
-        title,
-        body
-      })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-      })
-      .catch(error => console.log(error));
+    this.props.createArticle(articleData);
+
+    // if (respose) {
+    //   switch (response.status) {
+    //     case 201:
+    //       history.pushState("/");
+    //       break;
+    //     case 401:
+    //       history.push("/login");
+    //     case 403:
+    //       history.push("/");
+    //     default:
+    //       break;
+    //   }
+    // }
   };
 
   render() {
-    const { title, imageUrl, body } = this.state;
+    const { title, body } = this.state;
     return (
       <Fragment>
         <div className="col-md-8 mx-auto my-5">
@@ -132,10 +150,9 @@ class CreateArticle extends Component {
                 titlePlaceholderFocusOutHandler={
                   this.titlePlaceholderFocusOutHandler
                 }
-                titlePasteHandler={this.titlePasteHandler}
               />
             </div>
-            <div className="textEditor">
+            <div className={styles.textEditor}>
               <TextEditor
                 ref={node => (this.rootNode = node)}
                 value={body}
@@ -150,13 +167,15 @@ class CreateArticle extends Component {
               />
             </div>
           </div>
-          <div className="mt-3 buttonDiv">
-            <button
-              className={styles.publishButton}
-              onClick={this.handleSubmit}
-            >
-              Publish
-            </button>
+          <div className={styles.buttonDiv}>
+              <button
+                className={styles.publishButton}
+                onClick={this.handleSubmit}
+                disabled
+              >
+                Publish
+              </button>
+        
           </div>
         </div>
       </Fragment>
@@ -164,4 +183,17 @@ class CreateArticle extends Component {
   }
 }
 
-export default CreateArticle;
+CreateArticle.propTypes = {
+  createArticle: PropTypes.func.isRequired,
+  article: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = state => ({
+  article: state.article,
+  error: state.error
+});
+
+export default connect(
+  mapStateToProps,
+  { createArticle }
+)(CreateArticle);

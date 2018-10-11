@@ -6,21 +6,22 @@
   min-height: 600px;
   padding: 2em;
   background: #f9f9f9;
-
+  
   .artilcleTitle {
     padding: 0.3em;
     font-size: 1.4em;
     font-weight: bold;
   }
-
+  
   img {
     max-width: 100%;
   }
   .textEditor {
     width: 100%;
-
+    
+    p,
     span {
-      line-height: 0.8em;
+      line-height: 1.5em;
     }
   }
 }
@@ -28,14 +29,28 @@
 .buttonDiv {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  margin-top: 30px;
 }
 
 .publishButton {
-  background: #c40018;
+  border:1px solid #c40018;
+  color: #c40018;
+  padding: 5px 1.5em;
+  border-radius: 4px;
+  font-size: 0.8em;
+  align-self: flex-end;
+}
+
+.publishButton__disabled {
+  border: #ffb8c0;
   color: #fff;
   border: none;
   padding: 6px 1.7em;
   border-radius: 4px;
   outline: none;
+}
+
+.textEditor * {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.1em;
 }

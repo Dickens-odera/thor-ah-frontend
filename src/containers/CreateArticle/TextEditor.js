@@ -41,7 +41,7 @@ class TextEditor extends Component {
             "emoticons"
           ],
           selection_toolbar:
-            "bold italic underline strikethrough| h2 h3 | blockquote quicklink | alignleft aligncenter alignright alignfull",
+            "bold italic underline strikethrough| h2 h3 | blockquote quicklink | alignleft aligncenter alignright alignfull | numlist bullist",
           images_upload_handler: imageUploadHandler,
           images_reuse_filename: true,
           toolbar: "emoticons"

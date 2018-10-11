@@ -1,6 +1,5 @@
 import React from 'react';
 // styles
-import "bootstrap/dist/css/bootstrap.min.css"; 
 // images
 import dotIcon from "../../assets/dot.png";
 import likeIcon from "../../assets/up.png";
