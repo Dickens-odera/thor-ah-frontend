@@ -14,10 +14,10 @@ const AppRoutes = () => (
     <Fragment>
       <Header />
       <Route exact path='/' component={Homepage} />
-      {/* protected routes can be rendered using the ProtectedRoutes component */}
-      <ProtectedRoute path='/article' component={ ArticlePage }/>
-      <ProtectedRoute path='/profile/user' component={ ProfilePage }/>
       <Route exact path='/signin' component={ Signin }/>
+      {/* protected routes can be rendered using the ProtectedRoutes component */}
+      <ProtectedRoute path='/articles' component={ ArticlePage }/>
+      <ProtectedRoute path='/profile/user' component={ ProfilePage }/>
       <Footer />
     </Fragment>
   </Router>
