@@ -3,7 +3,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import PropTypes from "prop-types";
-import createArticle from "../../actions/articleAction";
+import createArticle from "../../actions/article";
 import ArticleTitle from "./ArticleTitle";
 import TextEditor from "./TextEditor";
 import styles from "./CreateArticle.module.scss";

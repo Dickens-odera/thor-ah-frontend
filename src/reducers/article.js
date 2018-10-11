@@ -2,7 +2,7 @@ import {
   CREATE_ARTICLE_SUCCESS,
   CREATE_ARTICLE_FAILURE,
   CREATE_ARTICLE_LOADING
-} from "../actions/action.types";
+} from "../actionTypes/article";
 import initialState from "../store/initialState";
 
 const article = (state = initialState.article, action) => {

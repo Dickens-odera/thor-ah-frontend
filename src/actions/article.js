@@ -5,7 +5,7 @@ import {
   CREATE_ARTICLE_SUCCESS,
   CREATE_ARTICLE_FAILURE,
   CREATE_ARTICLE_LOADING
-} from "./action.types";
+} from "../actionTypes/auth";
 
 dotenv.config();
 
