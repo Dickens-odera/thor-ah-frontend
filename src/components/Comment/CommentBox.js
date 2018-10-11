@@ -28,7 +28,7 @@ class CommentBox extends Component {
     const { comment } = this.state;
     if (comment.length < 1) return;
 
-    const articleSlug = window.location.pathname.split('/article/')[1];
+    const articleSlug = window.location.pathname.split('/articles/')[1];
     // hide any errors
     this.setState({
       showError: false,

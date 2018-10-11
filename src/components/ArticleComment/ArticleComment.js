@@ -18,7 +18,7 @@ export class ArticleComment extends Component {
 
   componentDidMount() {
     const { fetchArticleComments } = this.props;
-    const articleSlug = window.location.pathname.split('/article/')[1];
+    const articleSlug = window.location.pathname.split('/articles/')[1];
     fetchArticleComments(articleSlug);
   }
 

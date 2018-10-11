@@ -1,6 +1,11 @@
 import axios from "axios";
 
-import { SIGN_IN_SUCCESS, SIGN_IN_FAILURE, CLEAR_ERROR, SIGN_IN_LOADING } from "../actionTypes/signin";
+import {
+  SIGN_IN_SUCCESS,
+  SIGN_IN_FAILURE,
+  CLEAR_ERROR,
+  SIGN_IN_LOADING
+} from "../actionTypes/signin";
 
 const API = process.env.REACT_APP_API;
 
@@ -14,18 +19,16 @@ const signInFailure = error => ({
   payload: error
 });
 
-const siginLoading = (payload) => ({
+const siginLoading = payload => ({
   type: SIGN_IN_LOADING,
   payload
-
-})
+});
 
 export const clearErrors = () => ({
   type: CLEAR_ERROR
 });
 
-
-const signIn = (user) => (dispatch) => {
+const signIn = user => dispatch => {
   dispatch(siginLoading(true));
   axios
     .post(`${API}/api/users/login`, user)
@@ -40,8 +43,12 @@ const signIn = (user) => (dispatch) => {
       if (error.response) {
         return dispatch(signInFailure(error.response.data));
       }
-      return dispatch(signInFailure({ error: { message: 'Server unreachable at the moment' } }))
-    })
+      return dispatch(
+        signInFailure({
+          error: { message: "Server unreachable at the moment" }
+        })
+      );
+    });
 };
 
 export default signIn;
