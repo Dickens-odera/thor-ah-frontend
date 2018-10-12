@@ -66,8 +66,6 @@ export class Signup extends React.Component {
                         <GoX />
                     </span>
                 </button>
-                < div id={styles.regModal} >
-
                     <div className={styles.regContainer}>
                         <p className={styles.center} >{this.signupTitle}</p>
 
@@ -119,8 +117,6 @@ export class Signup extends React.Component {
                         <p className={styles.center}>Already Have an Account? <button type='button' className={styles.transparentBtn} onClick={this.goToSignin}><Link to="/auth/login"> Login </Link> </button></p>
 
                     </div>
-
-                </div >
             </div>
         )
     }

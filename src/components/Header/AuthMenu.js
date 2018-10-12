@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // icons
-import { GoKebabVertical, GoX } from 'react-icons/go';
+import { FaEllipsisV, FaTimes } from 'react-icons/fa';
 // styles
 import styles from './header.module.scss';
 import Signin from '../../containers/SignIn/SignIn'
@@ -53,7 +53,7 @@ class AuthMenu extends Component {
           <li><button type='button' className={signupStyle.transparentBtn} onClick={this.toggleSignupModal}>Register</button></li>
         </ul>
         <button className={styles.mobileMenuCtrl} onClick={this.triggerMobileCategory} type="button">
-          {mobileCategory === 'visible' ? <GoX /> : <GoKebabVertical />}
+          {mobileCategory === 'visible' ? <FaTimes /> : <FaEllipsisV />}
         </button>
         {modal}
         {signupModal}

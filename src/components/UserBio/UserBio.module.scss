@@ -63,10 +63,18 @@ $desktop-large: 1100px;
     .socialMedia {
       align-items: center;
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      padding: $padding * 2 $padding;
+      grid-template-columns: 1fr 1fr;
+      padding: 0 !important;
       margin: auto;
       width: 30%;
+
+      & > div {
+        a {
+          color: #000;
+          text-decoration: none;
+          font-size: 1.4em;
+        }
+      }
 
       @include tab {
         margin: auto;
