@@ -16,19 +16,36 @@ class CreateArticle extends Component {
       title: "Title",
       body: "Share your thoughts...",
       description: "",
-      error: {}
+      error: {
+        title: '',
+        body: '',
+      },
+      message: ''
     };
   }
+  
+  clearErrorMessages = () => {
+    this.setState({
+      error: {
+        title: '',
+        body: '',
+      },
+    });
+  }
 
-  titleChangeHandler = title =>
+  titleChangeHandler = title => {
+    this.clearErrorMessages();
     this.setState({
       title
     });
+  }
 
-  editorChangeHandler = body =>
+  editorChangeHandler = body => {
+    this.clearErrorMessages();
     this.setState({
       body
     });
+  }
 
   titlePlaceholderFocusInHandler = () => {
     const { title } = this.state;
@@ -45,6 +62,7 @@ class CreateArticle extends Component {
       });
     }
   };
+
 
   bodyPlaceholderFocusInHandler = () => {
     const { body } = this.state;
@@ -93,52 +111,83 @@ class CreateArticle extends Component {
   };
 
   validateArticle = () => {
-    const { title, body } = this.state;
+    const { title, body, error } = this.state;
     const bodyValue = this.rootNode.props.value;
 
-    if (title === "Title") return false;
-    if (body === "Share your thoughts..." || bodyValue.length < 30)
+    if (title === "Title" || title.trim() === '') {
+      this.setState({
+        error: {
+          title: 'Publishing will be available when you provide a title',
+        }
+      });
       return false;
+    }
+
+    if (body === "Share your thoughts..." || bodyValue.length < 30 || body.trim() === '') {
+      this.setState({
+        error: {
+          body: 'Publishing will be available when you provide a body',
+        }
+      });
+      return false;
+    }
+
+    this.setState({
+      error: {}
+    })
 
     return true;
   };
 
   handleSubmit = () => {
-    const { title, body } = this.state;
+    const { title, body, error } = this.state;
+    const { createArticle } = this.props;
+    const description = body.slice(0, 30);
     const articleData = {
       title,
       body,
       description: "Some description"
     };
-    console.log(body);
+
+    if (this.validateArticle() === false) {
+      console.log(error);
+      return;
+    }
 
     this.setState({
       title: "Title",
       body: "Share your thoughts..."
     });
 
-    this.props.createArticle(articleData);
+    const response = createArticle(articleData);
 
-    // if (respose) {
-    //   switch (response.status) {
-    //     case 201:
-    //       history.pushState("/");
-    //       break;
-    //     case 401:
-    //       history.push("/login");
-    //     case 403:
-    //       history.push("/");
-    //     default:
-    //       break;
-    //   }
-    // }
+    if (response) {
+      switch (response.status) {
+        case 201:
+          this.setState({
+            message: 'Article was successfully created'
+          })
+        default:
+          break;
+      }
+    }
   };
 
   render() {
-    const { title, body } = this.state;
+    const { title, body, error, message } = this.state;
+    const errorArray = Object.keys(error).filter(err => err[1] === '');
     return (
       <Fragment>
-        <div className="col-md-8 mx-auto my-5">
+        {Object.keys(error).length === 0 ? (
+          null
+        ) : (
+          <div>
+            {Object.entries(error).map((err, index) => (
+              <div className={styles.error} key={index}>{err[1]}</div>
+            ))}
+          </div>
+        )}
+        <div className="col-md-8 col-sm-10 col-12 mx-auto my-5">
           <div className={styles.createArticle}>
             <div className={styles.articleTitle}>
               <ArticleTitle
@@ -168,14 +217,13 @@ class CreateArticle extends Component {
             </div>
           </div>
           <div className={styles.buttonDiv}>
-              <button
-                className={styles.publishButton}
-                onClick={this.handleSubmit}
-                disabled
-              >
-                Publish
-              </button>
-        
+            <button
+              className={styles.publishButton}
+              onClick={this.handleSubmit}
+              // disabled
+            >
+              Publish
+            </button>
           </div>
         </div>
       </Fragment>
@@ -185,7 +233,7 @@ class CreateArticle extends Component {
 
 CreateArticle.propTypes = {
   createArticle: PropTypes.func.isRequired,
-  article: PropTypes.object.isRequired,
+  article: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
