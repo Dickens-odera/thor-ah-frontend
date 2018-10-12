@@ -1,11 +1,14 @@
 /* eslint-disable */
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 import PropTypes from "prop-types";
 import createArticle from "../../actions/article";
 import ArticleTitle from "./ArticleTitle";
 import TextEditor from "./TextEditor";
+import ErrorPage from "../Error";
+import stripHtml from "../../utils/stripHtml";
 import styles from "./CreateArticle.module.scss";
 
 class CreateArticle extends Component {
@@ -17,35 +20,35 @@ class CreateArticle extends Component {
       body: "Share your thoughts...",
       description: "",
       error: {
-        title: '',
-        body: '',
+        title: "",
+        body: ""
       },
-      message: ''
+      message: ""
     };
   }
-  
+
   clearErrorMessages = () => {
     this.setState({
       error: {
-        title: '',
-        body: '',
-      },
+        title: "",
+        body: ""
+      }
     });
-  }
+  };
 
   titleChangeHandler = title => {
     this.clearErrorMessages();
     this.setState({
       title
     });
-  }
+  };
 
   editorChangeHandler = body => {
     this.clearErrorMessages();
     this.setState({
       body
     });
-  }
+  };
 
   titlePlaceholderFocusInHandler = () => {
     const { title } = this.state;
@@ -62,7 +65,6 @@ class CreateArticle extends Component {
       });
     }
   };
-
 
   bodyPlaceholderFocusInHandler = () => {
     const { body } = this.state;
@@ -111,22 +113,26 @@ class CreateArticle extends Component {
   };
 
   validateArticle = () => {
-    const { title, body, error } = this.state;
+    const { title, body } = this.state;
     const bodyValue = this.rootNode.props.value;
 
-    if (title === "Title" || title.trim() === '') {
+    if (title === "Title" || title.trim() === "") {
       this.setState({
         error: {
-          title: 'Publishing will be available when you provide a title',
+          title: "Publishing will be available when you provide a title"
         }
       });
       return false;
     }
 
-    if (body === "Share your thoughts..." || bodyValue.length < 30 || body.trim() === '') {
+    if (
+      body === "Share your thoughts..." ||
+      bodyValue.length < 30 ||
+      body.trim() === ""
+    ) {
       this.setState({
         error: {
-          body: 'Publishing will be available when you provide a body',
+          body: "Publishing will be available when you start typing"
         }
       });
       return false;
@@ -134,7 +140,7 @@ class CreateArticle extends Component {
 
     this.setState({
       error: {}
-    })
+    });
 
     return true;
   };
@@ -142,11 +148,11 @@ class CreateArticle extends Component {
   handleSubmit = () => {
     const { title, body, error } = this.state;
     const { createArticle } = this.props;
-    const description = body.slice(0, 30);
+    const description = stripHtml(body).slice(0, 200);
     const articleData = {
       title,
       body,
-      description: "Some description"
+      description
     };
 
     if (this.validateArticle() === false) {
@@ -164,26 +170,28 @@ class CreateArticle extends Component {
     if (response) {
       switch (response.status) {
         case 201:
-          this.setState({
-            message: 'Article was successfully created'
-          })
+          <Redirect to={{
+            pathname: '/'
+          }} />
         default:
-          break;
+        <Redirect to={{
+          pathname: '/error'
+        }} />;
       }
     }
   };
 
   render() {
     const { title, body, error, message } = this.state;
-    const errorArray = Object.keys(error).filter(err => err[1] === '');
+    const errorArray = Object.keys(error).filter(err => err[1] === "");
     return (
       <Fragment>
-        {Object.keys(error).length === 0 ? (
-          null
-        ) : (
+        {Object.keys(error).length === 0 ? null : (
           <div>
             {Object.entries(error).map((err, index) => (
-              <div className={styles.error} key={index}>{err[1]}</div>
+              <div className={styles.error} key={index}>
+                {err[1]}
+              </div>
             ))}
           </div>
         )}
@@ -220,7 +228,6 @@ class CreateArticle extends Component {
             <button
               className={styles.publishButton}
               onClick={this.handleSubmit}
-              // disabled
             >
               Publish
             </button>

@@ -10,7 +10,7 @@
   .artilcleTitle {
     padding: 0.3em;
     font-size: 1.4em;
-    font-weight: bold;
+    font-weight: bolder;
   }
 
   img {
@@ -48,11 +48,11 @@
 }
 
 .error {
-  background-color:rgb(253, 166, 166);
+  // background-color: rgb(253, 166, 166);
   width: 100%;
   padding: 10px 20px;
   text-align: center;
-  color: #fff;
+  color: rgb(255, 140, 140);
   transition: 0.3 ease-in all;
 }
 
@@ -60,4 +60,13 @@
   background-color: rgb(4, 209, 168);
   padding: 10px 20px;
   text-align: center;
+}
+
+.white {
+  background: #fff;
+  width: 100%;
+  padding: 10px 20px;
+  text-align: center;
+  color: rgb(160, 160, 160);
+  transition: 0.3 ease-in all;
 }
