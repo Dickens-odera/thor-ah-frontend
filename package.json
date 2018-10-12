@@ -7,6 +7,7 @@
     "@fortawesome/fontawesome-free-brands": "^5.0.13",
     "@svgr/webpack": "2.4.1",
     "axios": "^0.18.0",
+    "axios-mock-adapter": "^1.15.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
     "babel-jest": "23.6.0",
@@ -32,10 +33,11 @@
     "jest": "23.6.0",
     "jest-pnp-resolver": "1.0.1",
     "jest-resolve": "23.6.0",
+    "jsonwebtoken": "^8.3.0",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.11",
-    "jsonwebtoken": "^8.3.0",
     "mini-css-extract-plugin": "0.4.3",
+    "moment": "^2.22.2",
     "node-sass": "^4.9.3",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "pnp-webpack-plugin": "1.1.0",
@@ -55,6 +57,7 @@
     "react-window-size": "^1.2.2",
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
+    "redux-mock-store": "^1.5.3",
     "redux-thunk": "^2.3.0",
     "resolve": "1.8.1",
     "sass-loader": "7.1.0",
@@ -139,7 +142,6 @@
     "fetch-mock": "^7.0.7",
     "jsonwebtoken": "^8.3.0",
     "prettier": "^1.14.3",
-    "react-test-renderer": "^16.5.2",
-    "redux-mock-store": "^1.5.3"
+    "react-test-renderer": "^16.5.2"
   }
 }

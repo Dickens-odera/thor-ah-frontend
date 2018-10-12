@@ -10,6 +10,10 @@ const initialState = {
       error: ''
     },
     isAuthenticated: false
+  },
+  articleCategory: {
+    category: null,
+    categories: [],
   }
 };
 

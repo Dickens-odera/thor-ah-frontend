@@ -11,8 +11,8 @@ class Category extends Component {
       categories: [
         { id: 1, name: 'Business' },
         { id: 2, name: 'Technology' },
-        { id: 3, name: 'Manufacturing' },
-        { id: 4, name: 'Art' },
+        { id: 3, name: 'Science' },
+        { id: 4, name: 'Sports' },
         { id: 5, name: 'Design' },
         { id: 6, name: 'Politics' },
       ],
@@ -31,9 +31,12 @@ class Category extends Component {
           {categories.map(category => {
             const { id, name } = category;
             return (
-              <li key={id}><Link to={`/articles/categories/${name.toLowerCase()}`}>{name}</Link></li>
+              <li key={id}><Link to={ `/articles/categories/${name}` }>{ name }</Link></li>
             );
           })}
+          <li>
+            <Link to="/categories"> All Categories </Link>
+          </li>
         </ul>
       </div>
     );

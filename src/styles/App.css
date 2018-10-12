@@ -4,6 +4,10 @@
   outline: none;
 }
 
+body {
+  min-height: 100vh;
+}
+
 .App {
   box-sizing: border-box;
   outline: none;
@@ -54,4 +58,31 @@
 .faLinkedin {
   color: #0077B5;
   font-size: 1.4em;
+}
+
+.card {
+  height: 100px;
+  line-height: 50px;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+}
+
+.category-card {
+  font-size: .7em;
+  color: #C40018;
+}
+
+@media (min-width: 1000px) {
+  .category-card {
+    font-size: 1em;
+  }
+}
+
+.category-hr {
+  margin-top: 90px;
+}
+
+.loading-spinner {
+  text-align: center;
+  min-height: 80vh;
 }

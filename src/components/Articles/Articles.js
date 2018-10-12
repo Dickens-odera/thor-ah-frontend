@@ -15,28 +15,28 @@ class Articles extends Component {
           id: 1,
           title: 'This Article talks about some Tall Buildings And City Night Life',
           slug: 'this-is-slug',
-          body: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
+          description: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
           thumbnail: thumbnailImage,
         },
         {
           id: 2,
           title: 'This Article talks about some Tall Buildings And City Night Life',
           slug: 'this-is-slug',
-          body: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
+          description: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
           thumbnail: thumbnailImage,
         },
         {
           id: 3,
           title: 'This Article talks about some Tall Buildings And City Night Life',
           slug: 'this-is-slug',
-          body: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
+          description: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
           thumbnail: thumbnailImage,
         },
         {
           id: 4,
           title: 'This Article talks about some Tall Buildings And City Night Life',
           slug: 'this-is-slug',
-          body: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
+          description: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.',
           thumbnail: thumbnailImage,
         }
       ]
@@ -57,8 +57,8 @@ class Articles extends Component {
       <div className={ styles.articles }>
         <div data-content="featured" className={ content === 'featured' ? styles.active : '' }>
           { articles.map(article => {
-            const { id, title, slug, thumbnail, body } = article;
-            const snippet = body;
+            const { id, title, slug, thumbnail, description } = article;
+            const snippet = description;
             const details = {
               author: 'John Doe',
               timeToRead: '2 mins Read',
