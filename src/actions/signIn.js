@@ -33,7 +33,7 @@ const signIn = (user) => (dispatch) => {
       localStorage.setItem("token", response.data.user.token);
       localStorage.setItem("user", JSON.stringify(response.data.user));
       dispatch(siginLoading(false));
-      dispatch(signInSuccess(response));
+      dispatch(signInSuccess(response.data));
     })
     .catch(error => {
       dispatch(siginLoading(false));

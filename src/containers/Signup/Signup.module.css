@@ -1,6 +1,4 @@
- #container {
-  vertical-align: top;
-  background-color:  #eFeFeF;
+#container {
   height: 100vh;
   position: fixed;
   top: 0;
@@ -10,7 +8,6 @@
   background: rgba(0, 0, 0, 0.7) !important;
   z-index: 3;
   cursor: pointer;
-  z-index: 4;
   overflow-y: auto;
  }
 
@@ -33,23 +30,29 @@
    transform: translate(-50%, -50%);
    font-size: 1.3em;
  }
-.transparentBtn{
+
+.transparentBtn {
   border: none;
   background: transparent;
   color: #FFF;
 }
- #regModal{
-   width: 100%;
-   height: 100%;
- }
+
+#regModal {
+  border: 3px solid red;
+}
 
  .regContainer{
    background-color: #FFFFFF;
-   width: 100%;
-   margin-left: auto;
-   margin-right: auto;
-   padding-top: 30px;
-   height: 640px; 
+   width: 90%;
+   max-height: 90vh !important;
+   border-radius: 10px;
+   margin: 10px auto !important;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   padding: 30px 20px;
+   overflow-y: scroll !important;
  }
  .regContainer p:first-child {
    font-size: 18px;

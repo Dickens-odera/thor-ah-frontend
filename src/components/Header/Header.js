@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import windowSize from 'react-window-size';
+import { connect } from 'react-redux';
 // components
 import Search from '../Search/Search';
 import Category from '../Category/Category';
@@ -26,8 +27,15 @@ class Header extends Component {
   }
 
   render() {
-    const { authenticated, user } = this.props;
     const { mobileCategory } = this.state;
+
+    // set menu based on authentication state
+    let displayedMenu = <AuthMenu triggerCategory={this.triggerMobileCategory} mobileCategory={mobileCategory} />; // regular
+    const { auth } = this.props;
+    if (auth && auth.isAuthenticated) {
+      displayedMenu = <Menu user={auth.user} triggerCategory={this.triggerMobileCategory} mobileCategory={mobileCategory} />;
+    }
+
     return (
       <header className={styles.clear}>
         <div className={styles.header_logo}>
@@ -40,11 +48,11 @@ class Header extends Component {
         </div>
         <div className={styles.header_half}>
           <Search />
-          {authenticated ? <Menu user={user} /> : <AuthMenu triggerCategory={this.triggerMobileCategory} mobileCategory={mobileCategory} />}
+          {displayedMenu}
         </div>
       </header>
     );
   }
 }
 
-export default windowSize(Header);
+export default connect(state => state)(windowSize(Header));

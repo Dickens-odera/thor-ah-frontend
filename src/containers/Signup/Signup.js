@@ -51,7 +51,7 @@ export class Signup extends React.Component {
             })
             this.showErrors = false;
         } else if (isAuthenticated) {
-            toggleModal(); // dissable modal
+            toggleModal(); // disable modal
         }
 
         let submitBtn = <button type="submit" id={styles.submitBtn} >Signup </button>
@@ -80,13 +80,13 @@ export class Signup extends React.Component {
                                         <div className={styles.errMsg} name="firstNameErr" id={`${styles.firstName}Err`} />
                                         <input type="text" name="firstName" className={styles.formInput} id={styles.firstName}
                                             placeholder="firstname" onChange={this.handleChange}
-                                            onFocus={clearError} required />
+                                            onFocus={clearError} required pattern=".{2,}" title="2 characters minimum" />
                                     </div>
                                     <div>
                                         <div className={styles.errMsg} name="lastNameErr" id={`${styles.lastName}Err`} />
                                         <input type="text" name="lastName" className={styles.formInput} id={styles.lastName}
                                             placeholder="lastname" onChange={this.handleChange}
-                                            onFocus={clearError} required />
+                                            onFocus={clearError} required pattern=".{2,}" title="2 characters minimum" />
                                     </div>
                                 </div>
 
@@ -95,7 +95,7 @@ export class Signup extends React.Component {
                                         <div className={styles.errMsg} name="usernameErr" id={`${styles.username}Err`} />
                                         <input type="text" name="username" className={styles.formInput} id={styles.username}
                                             placeholder="username" onChange={this.handleChange}
-                                            onFocus={clearError} required />
+                                            onFocus={clearError} required pattern=".{5,}" title="5 characters minimum" />
                                     </div>
                                     <div>
                                         <div className={styles.errMsg} name="emailErr" id={`${styles.email}Err`} />
@@ -109,14 +109,14 @@ export class Signup extends React.Component {
                                     <div className={styles.errMsg} name="passwordErr" id={`${styles.password}Err`} />
                                     <input type="password" name="password" className={styles.formInput} id={styles.password}
                                         placeholder="password" onChange={this.handleChange}
-                                        onFocus={clearError} required />
+                                        onFocus={clearError} required pattern=".{2,}" title="6 characters minimum" />
                                 </div>
                                 <div className={styles.formItemGroup}>
                                     {submitBtn}
                                 </div>
                             </div>
                         </form>
-                        <p className={styles.center}>Already Have an Account? <button type='button' className={styles.transparentBtn} onClick={this.goToSignin}><Link to="/auth/login"> Login </Link> </button></p>
+                        <p className={styles.center}>Already Have an Account? <button type='button' className={styles.transparentBtn} onClick={this.goToSignin}><Link to="/"> Login </Link> </button></p>
 
                     </div>
 

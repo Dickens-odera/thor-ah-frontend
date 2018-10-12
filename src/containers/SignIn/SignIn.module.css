@@ -202,7 +202,7 @@ width:260px;
   float: left;
 }
 
- @media only screen and (min-width: 768px) {
+ @media only screen and (min-width: 600px) {
    .regContainer {
      background-color: #FFFFFF;
      width: 506px;

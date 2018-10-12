@@ -26,10 +26,10 @@ class Search extends Component {
       width: searchActive ? '200px' : '0',
     };
     return (
-      <div className={ styles.search }>
+      <div className={`${styles.search}`}>
         <form>
-          <input type="text" placeholder="Search here" className={styles.search_input} style={ inputStyle } />
-          <button className={ styles.search_submit } type="submit" onClick={ this.processEvent }><FaSearch /></button>
+          <input type="text" placeholder="Search here" className={styles.search_input} style={inputStyle} />
+          <button className={styles.search_submit} type="submit" onClick={this.processEvent}><FaSearch /></button>
         </form>
       </div>
     );
