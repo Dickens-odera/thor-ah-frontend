@@ -85,4 +85,5 @@ body {
 .loading-spinner {
   text-align: center;
   min-height: 80vh;
+  margin-top: 100px;
 }

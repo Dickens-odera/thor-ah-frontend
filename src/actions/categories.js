@@ -58,6 +58,7 @@ const fetchCategoryError = () => ({
   type: FETCH_CATEGORY_ERROR,
 });
 
+
 // Get Article Category
 export const fetchCategoryAction = (categoryName) => dispatch => {
   dispatch(fetchCategory());

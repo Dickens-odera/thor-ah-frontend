@@ -65,7 +65,6 @@ class SingleCategory extends Component {
 
     if (category && !category.isLoading) {
       data = category.data;
-      console.log('DATA', data);
     }
     
     
@@ -81,7 +80,7 @@ class SingleCategory extends Component {
               const snippet = description;
               const details = {
                 author: `${author.firstName} ${author.lastName}`,
-                timeToRead: `${timeToRead} min Read`,
+                timeToRead: `${timeToRead} min read`,
                 date: moment(createdAt).format("Do MMM, YY"),
               }
               return (

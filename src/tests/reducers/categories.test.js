@@ -4,8 +4,16 @@ import * as types from '../../actionTypes/categories';
 describe('Categories reducer', () => {
   it('should return initial state', () => {
     expect(articleCategoryReducer(undefined, {})).toEqual({
-      category: null,
-      categories: [],
+      category: {
+        isLoading: false,
+        isError: false,
+        data: {}
+      },
+      categories: {
+        isLoading: false,
+        isError: false,
+        data: []
+      },
     });
   });
 

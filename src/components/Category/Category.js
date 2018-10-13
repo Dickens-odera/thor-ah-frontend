@@ -31,7 +31,7 @@ class Category extends Component {
           {categories.map(category => {
             const { id, name } = category;
             return (
-              <li key={id}><Link to={ `/articles/categories/${name}` }>{ name }</Link></li>
+              <li key={id}><Link to={ `/category/${name}` }>{ name }</Link></li>
             );
           })}
           <li>

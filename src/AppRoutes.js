@@ -17,7 +17,7 @@ const AppRoutes = () => (
       <Header />
       <Route exact path='/' component={Homepage} />
       <Route path='/categories' component={ AllCategories }/>
-      <Route path='/articles/categories/:name' component={ ArticleCategory } />
+      <Route path='/category/:name' component={ ArticleCategory } />
       {/* protected routes can be rendered using the ProtectedRoutes component */}
       <ProtectedRoute path='/article' component={ArticlePage} />
       <ProtectedRoute path='/profile/user' component={ProfilePage} />

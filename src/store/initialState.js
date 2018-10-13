@@ -12,8 +12,16 @@ const initialState = {
     isAuthenticated: false
   },
   articleCategory: {
-    category: null,
-    categories: [],
+    category: {
+      isLoading: false,
+      isError: false,
+      data: {}
+    },
+    categories: {
+      isLoading: false,
+      isError: false,
+      data: []
+    },
   }
 };
 

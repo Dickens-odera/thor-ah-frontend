@@ -40,7 +40,6 @@ export class Categories extends Component {
     }
   
     const { data } = categories;
-    console.log('DATA', data);
     
     
     return (
@@ -55,7 +54,7 @@ export class Categories extends Component {
               <div key={id} className='col-sm-6 col-md-4 col-sm-offset-6'>
                 <div className='card text-center'>
                   <div className='card-body'>
-                    <Link to={ `/articles/categories/${name}` }
+                    <Link to={ `/category/${name}` }
                       className='category-card'
                     >
                       { name }
